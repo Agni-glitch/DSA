@@ -64,7 +64,7 @@ int main() {
     cout << "To enqueue an integer type 1\n"
          << "To dequeue an integer type 2\n"
          << "To display queue type 3\n"
-         << "To stop the queue type 5\n";
+         << "To stop the queue type 4\n";
 
     while (i != 4) {
         cin >> i;
