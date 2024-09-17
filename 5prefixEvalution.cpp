@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #include <cstring> // For strlen() function
 #include <cctype>  // For isdigit() function
 using namespace std;
@@ -19,13 +20,13 @@ public:
         if (!isEmpty()) {
             return arr[top--];
         }
-        return INT16_MIN;
+        return INT_MIN;
     }
     int peek() {
         if (!isEmpty()) {
             return arr[top];
         }
-        return INT16_MIN;
+        return INT_MIN;
     }
 };
 int power(int base, int exponent) {
@@ -63,7 +64,7 @@ int evaluatePrefix(const char* prefix) {
                     break;
                 default:
                     cout << "Invalid operator encountered: " << ch <<endl;
-                    return INT16_MIN;
+                    return INT_MIN;
             }
         }
     }

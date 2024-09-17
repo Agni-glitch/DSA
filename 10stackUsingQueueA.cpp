@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #define MAX 10
 using namespace std;
 class queue
@@ -33,16 +34,16 @@ public:
     {
         int a;
         if (isEmpty())
-            return INT16_MIN;
+            return INT_MIN;
         front = front + 1;
         return arr[front];
         if (front == MAX)
-            return INT16_MAX;
+            return INT_MAX;
     }
     int peek()
     {
         if (isEmpty())
-            return INT16_MIN;
+            return INT_MIN;
         return arr[front + 1];
     }
     void display()
@@ -75,7 +76,7 @@ class Stack{
         if (Q1.isEmpty())
         {
             cout << "nothing is in stack\n";
-            return INT16_MIN;
+            return INT_MIN;
         }
         return Q1.dequeue();
     }
@@ -83,7 +84,7 @@ class Stack{
         if (Q1.isEmpty())
         {
             cout << "nothing is in stack\n";
-            return INT16_MIN;
+            return INT_MIN;
         }
         return Q1.peek();
     }

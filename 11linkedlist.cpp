@@ -210,18 +210,16 @@ public:
         return;
     }
     Node *temp = head;
-    Node *prev = NULL;
-    while (temp != NULL && temp->data < item) {
-        prev = temp;
+    while (temp != NULL && temp->next->data < item) {
         temp = temp->next;
     }
-    if (prev == NULL) {
+    if (temp == NULL) {
         curr->next = head;
         head = curr;
-    } 
+    }
     else {
-        prev->next = curr;
-        curr->next = temp;
+        curr->next = temp->next;
+        temp->next = curr;
     }
 }
     void deleteAny(int item)

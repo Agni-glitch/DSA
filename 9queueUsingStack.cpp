@@ -60,7 +60,7 @@ void enqueue(int x){
 int dequeue(){
     if(S1.isEmpty()&&S2.isEmpty()){
         cout<<"queue is empty.";
-        return INT16_MIN;
+        return INT_MIN;
     }
     if (S2.isEmpty())
     {

@@ -94,15 +94,13 @@ public:
             return;
         }
         Node *temp = last->next;
-        Node *prev = last;
-        while (temp->next != last->next)  
+        while (temp->next->next != last->next)  
         {
-            prev = temp;
             temp = temp->next;
         }
-        prev->next = last->next;  
+        temp->next = last->next;  
         delete last;
-        last = prev;  
+        last = temp;  
     }
 };
 int main()
