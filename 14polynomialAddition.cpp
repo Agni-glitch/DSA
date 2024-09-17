@@ -25,16 +25,14 @@ class poly{
             return;
         }
         Node *temp = head;
-        Node *prev = NULL;
-        while (temp != NULL && temp->exp > b) {
-            prev = temp;
+        while (temp->next != NULL && temp->next->exp >= b) {
             temp = temp->next;
         }
         if (temp != NULL && temp->exp == b) {
             temp->coeff += a;
         } else {
-            newNode->next = temp;
-            prev->next = newNode;
+            newNode->next = temp->next;
+            temp->next = newNode;
         }
     }
     void display(){

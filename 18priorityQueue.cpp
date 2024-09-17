@@ -30,7 +30,7 @@ class priorityQueue{
             temp=temp->next;
         }
         newNode->next=temp->next;
-        temp=newNode;
+        temp->next=newNode;
         return;
     }
     int deQueue(){
