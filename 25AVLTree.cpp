@@ -79,6 +79,46 @@ public:
         }
         return r;
     }
+    Node* deleteNode(Node* r,int key){
+        if(r==NULL)return r;
+        if(key<r->data)
+            r->lchild=deleteNode(r->lchild,key);
+        else if(key>r->data)
+            r->rchild=deleteNode(r->rchild,key);
+        else{
+            if(r->lchild==NULL){
+                Node* temp=r->rchild;
+                delete r;
+                return temp;
+            }
+            else if(r->rchild==NULL){
+                Node* temp=r->lchild;
+                delete r;
+                return temp;
+            }
+        }
+        return r;
+        if(r==NULL){
+            return r;
+        }
+        r->height=1+max(getH(r->lchild),getH(r->rchild));
+        int balance=getBalance(r);
+        if(balance>1 && getBalance(r->lchild)>=0){
+            return rightRotate(r);
+        }
+        if(balance>1 && getBalance(r->lchild)<0){
+            r->lchild=leftRotate(r->lchild);
+            return rightRotate(r);
+        }
+        if(balance<-1 && getBalance(r->rchild)<=0){
+            return leftRotate(r);
+        }
+        if(balance<-1 && getBalance(r->rchild)>0){
+            r->rchild=rightRotate(r->rchild);
+            return leftRotate(r);
+        }
+        return r;
+    }
     void inorder(Node* r) {
         if (r == NULL) return;
         inorder(r->lchild);
@@ -89,14 +129,14 @@ public:
 int main() {
     Tree t;
     int choice, value;
-        cout << "\nAVL Tree Operations Menu:\n";
-        cout << "1. Insert Node\n";
-        cout << "2. Inorder Traversal\n";
-        cout << "0. Exit\n";
-        cout << "Enter your choice: ";
+    cout << "\nAVL Tree Operations Menu:\n";
+    cout << "1. Insert Node\n";
+    cout << "2. Inorder Traversal\n";
+    cout << "3. Delete Node\n";
+    cout << "0. Exit\n";
     do {
+        cout << "Enter your choice: ";
         cin >> choice;
-
         switch (choice) {
             case 1:
                 cout << "Enter value to insert: ";
@@ -108,6 +148,11 @@ int main() {
                 t.inorder(t.root);
                 cout << endl;
                 break;
+            case 3:
+                cout << "Enter value to delete: ";
+                cin >> value;
+                t.root = t.deleteNode(t.root, value);
+                break;
             case 0:
                 cout << "Exiting...\n";
                 break;
@@ -115,6 +160,5 @@ int main() {
                 cout << "Invalid choice. Please try again.\n";
         }
     } while (choice != 0);
-
     return 0;
 }
