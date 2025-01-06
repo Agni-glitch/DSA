@@ -3,9 +3,9 @@
 using namespace std;
 class myStack
 {
-public:
     int arr[MAX];
     int top;
+public:
     myStack()
     {
         top = -1;

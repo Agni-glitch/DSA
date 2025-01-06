@@ -1,5 +1,5 @@
 #include <iostream>
-#include <climits>
+#include <climits> // For INT_MIN
 #include <cstring> // For strlen() function
 #include <cctype>  // For isdigit() function
 using namespace std;

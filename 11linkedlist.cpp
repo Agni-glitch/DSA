@@ -192,7 +192,7 @@ public:
             return false;
         }
         Node *temp = head;
-        while (temp->next != NULL)
+        while (temp->next->next!=NULL)
         {
             if (temp->data > temp->next->data)
             {
@@ -203,25 +203,30 @@ public:
         return true;
     }
 
-    void addSorted(int item) {
-    Node *curr = new Node(item);
-    if (head == NULL) {
-        head = curr;
-        return;
+    void addSorted(int item)
+    {
+        Node *curr = new Node(item);
+        if (head == NULL)
+        {
+            head = curr;
+            return;
+        }
+        Node *temp = head;
+        while (temp != NULL && temp->data < item)
+        {
+            temp = temp->next;
+        }
+        if (temp == NULL)
+        {
+            curr->next = head;
+            head = curr;
+        }
+        else
+        {
+            curr->next = temp->next;
+            temp->next = curr;
+        }
     }
-    Node *temp = head;
-    while (temp != NULL && temp->next->data < item) {
-        temp = temp->next;
-    }
-    if (temp == NULL) {
-        curr->next = head;
-        head = curr;
-    }
-    else {
-        curr->next = temp->next;
-        temp->next = curr;
-    }
-}
     void deleteAny(int item)
     {
         Node *temp = head, *prev;
@@ -275,7 +280,7 @@ int main()
     cout << "13. To delete item at any place" << endl;
     cout << "14. Exit" << endl;
     cout << "Enter your choice: ";
-    while (choice!=14)
+    while (choice != 14)
     {
         cin >> choice;
         switch (choice)

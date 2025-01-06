@@ -26,7 +26,7 @@ class priorityQueue{
             return;
         }
         Node* temp= front;
-        if(temp->next->priority>=p||temp->next!=NULL){
+        while(temp->next->priority<=p&&temp->next!=NULL){
             temp=temp->next;
         }
         newNode->next=temp->next;
