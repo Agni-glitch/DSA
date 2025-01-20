@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #define MAX 5
 using namespace std;
 class myStack
@@ -27,14 +28,14 @@ public:
     int pop()
     {
         if (isEmpty())
-            return -1;
+            return INT_MIN;
         int k = arr[top--];
         return k;
     }
     int peek()
     {
         if (isEmpty())
-            return -1;
+            return INT_MIN;
         return arr[top];
     }
     void display()
